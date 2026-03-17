@@ -1,0 +1,50 @@
+{
+  "id": 13961854,
+  "name": "main-checks",
+  "target": "branch",
+  "source_type": "Repository",
+  "source": "lmeller-git/ast-sqlite-test",
+  "enforcement": "active",
+  "conditions": {
+    "ref_name": {
+      "exclude": [],
+      "include": [
+        "~DEFAULT_BRANCH"
+      ]
+    }
+  },
+  "rules": [
+    {
+      "type": "required_status_checks",
+      "parameters": {
+        "strict_required_status_checks_policy": true,
+        "do_not_enforce_on_create": false,
+        "required_status_checks": [
+          {
+            "context": "clippy",
+            "integration_id": 15368
+          },
+          {
+            "context": "macos-latest / stable",
+            "integration_id": 15368
+          },
+          {
+            "context": "windows-latest / stable",
+            "integration_id": 15368
+          },
+          {
+            "context": "ubuntu / stable",
+            "integration_id": 15368
+          }
+        ]
+      }
+    }
+  ],
+  "bypass_actors": [
+    {
+      "actor_id": 2,
+      "actor_type": "RepositoryRole",
+      "bypass_mode": "always"
+    },
+  ]
+}
